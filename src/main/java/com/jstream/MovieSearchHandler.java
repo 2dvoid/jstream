@@ -1,0 +1,47 @@
+package com.jstream;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.Scanner;
+
+/** Handles all UI and logic for searching for a Movie. It implements the SearchHandler contract. */
+public class MovieSearchHandler implements SearchHandler {
+
+    // These are the "tools" this handler needs to do its job.
+    // They are passed in from the main app.
+    private final Scanner in;
+    private final List<ScraperProvider> providers;
+
+    /** Constructor to "inject" the shared tools. */
+    public MovieSearchHandler(Scanner scanner, List<ScraperProvider> providers) {
+        this.in = scanner;
+        this.providers = providers;
+    }
+
+    @Override
+    public void search() {
+        System.out.print("Enter movie name: ");
+        String query = in.nextLine().trim();
+
+        if (query.isEmpty()) {
+            System.out.println("Search query cannot be empty.");
+            return;
+        }
+
+        //System.out.println("Searching all providers for: " + query);
+
+        // This is the same "chain of responsibility" logic from before
+        for (ScraperProvider provider : providers) {
+
+            Optional<String> streamUrl = provider.searchMovie(query);
+
+            if (streamUrl.isPresent()) {
+                System.out.println("Success! Found a result.");
+                System.out.println("URL: " + streamUrl.get());
+                return; // Stop searching and return to main menu
+            }
+        }
+
+        System.out.println(">>> No results found for '" + query + "' on any provider.");
+    }
+}

@@ -1,0 +1,11 @@
+# Ignore Maven build folder
+target/
+
+# Ignore IDE files
+.idea/
+*.iml
+.vscode/
+
+# --- SECURITY ---
+# Ignore the file containing the API Key
+src/main/resources/config.properties
