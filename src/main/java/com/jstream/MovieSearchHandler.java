@@ -11,11 +11,13 @@ public class MovieSearchHandler implements SearchHandler {
     // They are passed in from the main app.
     private final Scanner in;
     private final List<ScraperProvider> providers;
+    private final MediaPlayer player;
 
     /** Constructor to "inject" the shared tools. */
-    public MovieSearchHandler(Scanner scanner, List<ScraperProvider> providers) {
+    public MovieSearchHandler(Scanner scanner, List<ScraperProvider> providers, MediaPlayer player) {
         this.in = scanner;
         this.providers = providers;
+        this.player = player;
     }
 
     @Override
@@ -43,8 +45,9 @@ public class MovieSearchHandler implements SearchHandler {
             Optional<String> streamUrl = provider.searchMovie(query,year);
 
             if (streamUrl.isPresent()) {
-                System.out.println("Success! Found a result.");
+                //System.out.println("Success! Found a result.");
                 System.out.println("URL: " + streamUrl.get());
+                player.play(streamUrl.get());
                 return; // Stop searching and return to main menu
             }
         }

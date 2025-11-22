@@ -8,10 +8,12 @@ public class JStreamApp {
 
     private final Scanner in;
     private final List<ScraperProvider> providers;
+    private final MediaPlayer player;
 
     JStreamApp() {
         this.in = new Scanner(System.in);
         this.providers = new ArrayList<>();
+        this.player = new MediaPlayer();
 
         // Add providers according to Priority
         this.providers.add(new SamFtpScraper()); // Priority 1
@@ -32,7 +34,7 @@ public class JStreamApp {
                 case 1:
                     // !!Delegate to Movie Handler;
                     //System.out.println("Delegating to Movie Handler...");
-                    new MovieSearchHandler(in, providers).search();
+                    new MovieSearchHandler(in, providers, player).search();
                     break;
                 case 2:
                     System.out.println("This Feature is not implemented yet.");
@@ -48,7 +50,7 @@ public class JStreamApp {
 
     private void printMenu() {
         System.out.println("\n========================================");
-        System.out.println("        Welcome to jStream CLI");
+        System.out.println("        Welcome to JStream");
         System.out.println("========================================");
         System.out.println("1. Search Movie");
         System.out.println("2. Search TV Series (coming soon)");
