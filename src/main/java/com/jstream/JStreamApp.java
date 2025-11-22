@@ -34,7 +34,7 @@ public class JStreamApp {
                 case 1:
                     // !!Delegate to Movie Handler;
                     //System.out.println("Delegating to Movie Handler...");
-                    new MovieSearchHandler(in, providers, player).search();
+                    new MovieHandler(in, providers, player).search();
                     break;
                 case 2:
                     System.out.println("This Feature is not implemented yet.");

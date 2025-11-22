@@ -5,7 +5,7 @@ import java.util.Optional;
 import java.util.Scanner;
 
 /** Handles all UI and logic for searching for a Movie. It implements the SearchHandler contract. */
-public class MovieSearchHandler implements SearchHandler {
+public class MovieHandler implements SearchHandler {
 
     // These are the "tools" this handler needs to do its job.
     // They are passed in from the main app.
@@ -14,7 +14,7 @@ public class MovieSearchHandler implements SearchHandler {
     private final MediaPlayer player;
 
     /** Constructor to "inject" the shared tools. */
-    public MovieSearchHandler(Scanner scanner, List<ScraperProvider> providers, MediaPlayer player) {
+    public MovieHandler(Scanner scanner, List<ScraperProvider> providers, MediaPlayer player) {
         this.in = scanner;
         this.providers = providers;
         this.player = player;
