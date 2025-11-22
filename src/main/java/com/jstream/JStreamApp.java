@@ -31,7 +31,7 @@ public class JStreamApp {
             switch (choice) {
                 case 1:
                     // !!Delegate to Movie Handler;
-                    System.out.println("Delegating to Movie Handler...");
+                    //System.out.println("Delegating to Movie Handler...");
                     new MovieSearchHandler(in, providers).search();
                     break;
                 case 2:

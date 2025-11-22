@@ -28,12 +28,19 @@ public class MovieSearchHandler implements SearchHandler {
             return;
         }
 
-        //System.out.println("Searching all providers for: " + query);
+        // Prompt user for manual Release Year entry
+        System.out.print("Enter Release Year [Optional][Press Enter to skip]: ");
+        String yearInput = in.nextLine().trim();
 
-        // This is the same "chain of responsibility" logic from before
+        // Treat empty string as null so scrapers know to use OMDb
+        String year = yearInput.isEmpty() ? null : yearInput;
+
+        //System.out.println("Searching all providers for: " + query + (year != null ? " (" + year + ")" : ""));
+
+        // Search all providers for the movie
         for (ScraperProvider provider : providers) {
 
-            Optional<String> streamUrl = provider.searchMovie(query);
+            Optional<String> streamUrl = provider.searchMovie(query,year);
 
             if (streamUrl.isPresent()) {
                 System.out.println("Success! Found a result.");

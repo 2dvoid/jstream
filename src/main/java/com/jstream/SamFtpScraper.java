@@ -21,18 +21,22 @@ public class SamFtpScraper implements ScraperProvider {
     }
 
     @Override
-    public Optional<String> searchMovie(String query) {
-        //System.out.println("-> [SamFTP] Resolving release year for: " + query);
+    public Optional<String> searchMovie(String query, String manualYear) {
+        String resolvedYear = manualYear;
 
-        String year = infoFetcher.fetchYear(query);
-
-        if (year == null) {
-            System.out.println("-> [SamFTP] Could not determine release year. Skipping.");
-            return Optional.empty();
+        // If user didn't provide a year, ask OMDb
+        if (resolvedYear == null || resolvedYear.isEmpty()) {
+            System.out.println("-> [SamFTP] Resolving release year via OMDb...");
+            resolvedYear = infoFetcher.fetchYear(query);
+            if (resolvedYear == null) {
+                System.out.println("-> [SamFTP] Could not determine year. Skipping.");
+                return Optional.empty();
+            }
+        } else {
+            System.out.println("-> [SamFTP] Using manually provided year: " + resolvedYear);
         }
-
         // Step 1: Construct the Year Folder URL
-        String yearFolderUrl = buildYearUrl(year);
+        String yearFolderUrl = buildYearUrl(resolvedYear);
 
         try {
             // --- HOP 1: Find the Movie Folder inside the Year Folder ---
@@ -56,7 +60,7 @@ public class SamFtpScraper implements ScraperProvider {
             }
 
             if (movieFolderUrl == null) {
-                System.out.println("-> [SamFTP] Movie folder not found in year " + year);
+                System.out.println("-> [SamFTP] Movie folder not found in year " + resolvedYear);
                 return Optional.empty();
             }
 
