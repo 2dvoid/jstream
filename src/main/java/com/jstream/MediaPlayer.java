@@ -18,14 +18,14 @@ public class MediaPlayer {
         if (os.contains("win")) {
             // Windows: Use 'start vlc'.
             // This works if VLC is in the PATH or registered in the system.
-            pb.command("cmd.exe", "/c", "start", "vlc", streamUrl);
+            pb.command("cmd.exe", "/c", "start", "vlc", "--fullscreen", streamUrl);
         } else if (os.contains("mac")) {
             // macOS: Use 'open -a vlc'.
             // This tells macOS to find the VLC app in /Applications and open the URL.
-            pb.command("open", "-a", "vlc", streamUrl);
+            pb.command("open", "-a", "vlc", "--args", "--fullscreen", streamUrl);
         } else {
             // Linux: Use 'mpv' as requested.
-            pb.command("mpv", streamUrl);
+            pb.command("mpv", "--fullscreen", streamUrl);
         }
 
         try {
