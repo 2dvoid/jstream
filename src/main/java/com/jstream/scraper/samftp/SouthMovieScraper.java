@@ -9,12 +9,13 @@ import java.util.regex.Pattern;
 
 class SouthMoviesScraper extends SamBaseScraper {
 
+    private static final String URL = "http://172.16.50.14/DHAKA-FLIX-14/SOUTH%20INDIAN%20MOVIES/Hindi%20Dubbed";
     // Regex specific to South Movies folder structure
     private static final Pattern BEFORE_PATTERN = Pattern.compile("(\\d{4})\\s*&\\s*Before", Pattern.CASE_INSENSITIVE);
     private static final Pattern RANGE_PATTERN = Pattern.compile("(\\d{4})\\s*(?:-|to)\\s*(\\d{4})", Pattern.CASE_INSENSITIVE);
 
-    SouthMoviesScraper(String baseUrl) {
-        super(baseUrl);
+    SouthMoviesScraper() {
+        super(URL);
     }
 
     @Override

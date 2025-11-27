@@ -8,8 +8,10 @@ import java.util.regex.Pattern;
 
 class KolkataScraper extends SamBaseScraper {
 
-    KolkataScraper(String baseUrl) {
-        super(baseUrl);
+    private static final String URL = "http://172.16.50.7/DHAKA-FLIX-7/Kolkata%20Bangla%20Movies";
+
+    KolkataScraper() {
+        super(URL);
     }
 
     @Override

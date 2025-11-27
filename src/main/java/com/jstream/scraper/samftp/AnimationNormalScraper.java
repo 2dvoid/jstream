@@ -6,10 +6,12 @@ import org.jsoup.nodes.Element;
 import java.util.Optional;
 import java.util.regex.Pattern;
 
-class English1080pScraper extends SamBaseScraper {
+class AnimationNormalScraper extends SamBaseScraper {
 
-    English1080pScraper(String baseUrl) {
-        super(baseUrl);
+    private static final String URL = "http://172.16.50.14/DHAKA-FLIX-14/Animation%20Movies";
+
+    AnimationNormalScraper() {
+        super(URL);
     }
 
     @Override
@@ -18,7 +20,7 @@ class English1080pScraper extends SamBaseScraper {
             Document rootDoc = Jsoup.connect(baseUrl).timeout(3000).get();
             String yearFolderUrl = null;
 
-            // Logic: Scan for "(YEAR)" in folder name
+            // Logic: Scan for "(YEAR)"
             for (Element link : rootDoc.select("a[href]")) {
                 if (link.attr("href").endsWith("/") && link.text().contains("(" + targetYear + ")")) {
                     yearFolderUrl = resolveUrl(baseUrl, link.attr("href"));
@@ -28,7 +30,7 @@ class English1080pScraper extends SamBaseScraper {
 
             if (yearFolderUrl == null) return Optional.empty();
 
-            // Scan inside
+            // Logic: Scan inside Year Folder
             Document yearDoc = Jsoup.connect(yearFolderUrl).timeout(3000).get();
             for (Element link : yearDoc.select("a[href]")) {
                 if (queryPattern.matcher(link.text()).matches() && link.attr("href").endsWith("/")) {

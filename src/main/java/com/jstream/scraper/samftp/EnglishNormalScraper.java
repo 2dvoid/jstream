@@ -8,8 +8,11 @@ import java.util.regex.Pattern;
 
 class EnglishNormalScraper extends SamBaseScraper {
 
-    EnglishNormalScraper(String baseUrl) {
-        super(baseUrl);
+    private static final String URL = "http://172.16.50.7/DHAKA-FLIX-7/English%20Movies";
+
+    EnglishNormalScraper() {
+
+        super(URL);
     }
 
     @Override

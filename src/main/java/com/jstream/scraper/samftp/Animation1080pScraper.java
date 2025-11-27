@@ -8,8 +8,9 @@ import java.util.regex.Pattern;
 
 class Animation1080pScraper extends SamBaseScraper {
 
-    Animation1080pScraper(String baseUrl) {
-        super(baseUrl);
+    private static final String URL = "http://172.16.50.14/DHAKA-FLIX-14/Animation%20Movies%20(1080p)";
+    Animation1080pScraper() {
+        super(URL);
     }
 
     @Override

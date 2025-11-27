@@ -8,8 +8,10 @@ import java.util.regex.Pattern;
 
 class HindiScraper extends SamBaseScraper {
 
-    HindiScraper(String baseUrl) {
-        super(baseUrl);
+    private static final String URL = "http://172.16.50.14/DHAKA-FLIX-14/Hindi%20Movies";
+
+    HindiScraper() {
+        super(URL);
     }
 
     @Override
