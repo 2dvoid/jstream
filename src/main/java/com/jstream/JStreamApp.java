@@ -1,7 +1,13 @@
 package com.jstream;
 
-import java.util.Scanner;
+import com.jstream.core.ScraperProvider;
+import com.jstream.scraper.samftp.SamFtpScraper; // Import from scraper package
+import com.jstream.services.MediaPlayer;
+import com.jstream.ui.MovieHandler;
+
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 import java.util.ArrayList;
 
 public class JStreamApp {

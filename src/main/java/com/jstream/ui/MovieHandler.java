@@ -1,8 +1,10 @@
-package com.jstream;
+package com.jstream.ui;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.Scanner;
+import com.jstream.services.MediaPlayer;
+import com.jstream.core.ScraperProvider;
 
 /** Handles all UI and logic for searching for a Movie. It implements the SearchHandler contract. */
 public class MovieHandler implements SearchHandler {

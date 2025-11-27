@@ -1,4 +1,4 @@
-package com.jstream;
+package com.jstream.services;
 
 import org.jsoup.Jsoup;
 import java.io.IOException;

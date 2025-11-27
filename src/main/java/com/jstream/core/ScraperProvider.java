@@ -1,4 +1,4 @@
-package com.jstream;
+package com.jstream.core;
 
 import java.util.Optional;
 
