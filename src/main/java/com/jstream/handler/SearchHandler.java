@@ -1,4 +1,4 @@
-package com.jstream.ui;
+package com.jstream.handler;
 
 
 public interface SearchHandler{

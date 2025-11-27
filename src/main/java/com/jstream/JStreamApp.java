@@ -3,7 +3,7 @@ package com.jstream;
 import com.jstream.core.ScraperProvider;
 import com.jstream.scraper.samftp.SamFtpScraper; // Import from scraper package
 import com.jstream.services.MediaPlayer;
-import com.jstream.ui.MovieHandler;
+import com.jstream.handler.MovieHandler;
 
 import java.util.ArrayList;
 import java.util.List;
