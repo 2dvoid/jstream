@@ -1,7 +1,7 @@
-# What is jStream?
+# What?
 jStream is a CLI tool that lets you search and stream movies, TV series, and anime directly from popular BDIX FTP servers.
 
-# Why jStream?
+# Why?
 Using raw FTP servers to watch media is a daunting task. First, you need to open a browser and navigate to a specific IP address. Since these servers rarely provide search functionality, you are forced to manually click through folder after folder to find what you need.
 
 If you are lucky enough to find the movie, you then have to choose between downloading a large file or manually copying the link into a media player. If you don't find it, you have to start the whole process over on a different server.
